@@ -1,0 +1,20 @@
+{
+  "name": "speedread-frontend",
+  "version": "1.0.0",
+  "description": "Spritz-style speed reading application - Frontend",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "speed-reading",
+    "spritz",
+    "frontend",
+    "vanilla-js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}

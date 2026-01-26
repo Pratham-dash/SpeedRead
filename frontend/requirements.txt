@@ -1,0 +1,2 @@
+# No dependencies required
+# This is a pure vanilla JavaScript frontend application
