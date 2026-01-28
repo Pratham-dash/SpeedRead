@@ -14,15 +14,14 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(config.Config)
     
-    # Enable CORS for frontend communication
-    # In production, replace "*" with specific frontend URL
-    CORS(app, resources={
-    r"/*": {
-        "origins": app.config["CORS_ORIGINS"],
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
-    }
-})
+
+    CORS(
+        app,
+        resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}},
+        supports_credentials=True,  # Allow cookies/auth if needed
+        methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"]
+    )
     
     # Register blueprints
     app.register_blueprint(api_blueprint, url_prefix='/api')
