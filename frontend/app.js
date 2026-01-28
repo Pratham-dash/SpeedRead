@@ -28,23 +28,22 @@ const elements = {
     totalWordsEl: document.querySelector('.total-words'),
     progressBar: document.querySelector('.progress-bar-fill'),
     textInput: document.getElementById('textInput'),
-    loadTextBtn: document.getElementById('loadTextBtn'),
-    statusIndicator: document.getElementById('statusIndicator')
+    loadTextBtn: document.getElementById('loadTextBtn')
+    // statusIndicator removed
 };
 
 async function checkBackendStatus() {
     console.log('Checking backend status...');
     
+    // Status indicator removed; just check backend and log
     try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 2000);
 
-        // Health check should use the root backend URL, not /api
         const healthUrl = API_BASE_URL.endsWith('/api')
             ? API_BASE_URL.replace(/\/api$/, '') + '/health'
             : API_BASE_URL + '/health';
 
-        console.log(`Fetching from ${healthUrl}`);
         const response = await fetch(healthUrl, {
             method: 'GET',
             signal: controller.signal
@@ -52,12 +51,8 @@ async function checkBackendStatus() {
 
         clearTimeout(timeoutId);
 
-        console.log('Response status:', response.status, response.ok);
-
         if (response.ok) {
             appState.backendConnected = true;
-            elements.statusIndicator.classList.add('connected');
-            elements.statusIndicator.classList.remove('disconnected');
             console.log('Backend API is available');
             return true;
         }
@@ -66,8 +61,6 @@ async function checkBackendStatus() {
     }
 
     appState.backendConnected = false;
-    elements.statusIndicator.classList.add('disconnected');
-    elements.statusIndicator.classList.remove('connected');
     console.log('Using local processing');
     return false;
 }
