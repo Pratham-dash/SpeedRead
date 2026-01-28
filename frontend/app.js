@@ -1,5 +1,6 @@
 // SpeedRead - Spritz-style speed reader
 
+const USE_BACKEND = true;
 // Config
 const API_BASE_URL = window.API_BASE_URL;
 
