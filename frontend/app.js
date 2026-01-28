@@ -1,8 +1,7 @@
 // SpeedRead - Spritz-style speed reader
 
 // Config
-const API_BASE_URL = 'https://speedread-api-bfaf.onrender.com';
-const USE_BACKEND = true;
+const API_BASE_URL = window.API_BASE_URL;
 
 // App state
 const appState = {
