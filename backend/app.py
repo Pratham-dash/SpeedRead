@@ -17,12 +17,12 @@ def create_app():
     # Enable CORS for frontend communication
     # In production, replace "*" with specific frontend URL
     CORS(app, resources={
-        r"/*": {  # Allow all routes
-            "origins": "*",  # TODO: Restrict in production
-            "methods": ["GET", "POST", "OPTIONS"],
-            "allow_headers": ["Content-Type"]
-        }
-    })
+    r"/*": {
+        "origins": app.config["CORS_ORIGINS"],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
     
     # Register blueprints
     app.register_blueprint(api_blueprint, url_prefix='/api')
