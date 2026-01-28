@@ -45,5 +45,3 @@ dist/
 build/
 *.egg-info/
 
-# Frontend config (contains backend URL)
-frontend/config.js
