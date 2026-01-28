@@ -57,16 +57,20 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
+    
+    # Get port from environment (Render assigns this)
+    port = int(os.getenv('PORT', 5000))
+    debug = os.getenv('DEBUG', 'False').lower() == 'true'
+    
     print("=" * 60)
     print("SpeedRead Backend API")
     print("=" * 60)
-    print(f"Server running on: http://0.0.0.0:5000")
-    print(f"Health check: http://localhost:5000/health")
-    print(f"API endpoint: http://localhost:5000/api/process-text")
+    print(f"Server running on: http://0.0.0.0:{port}")
+    print(f"Debug mode: {debug}")
     print("=" * 60)
     
     app.run(
         host='0.0.0.0',
-        port=5000,
-        debug=True
+        port=port,
+        debug=debug
     )
