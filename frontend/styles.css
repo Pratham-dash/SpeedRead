@@ -174,9 +174,15 @@ body::before {
 }
 
 .word-display.heading-word .word-before,
-.word-display.heading-word .word-after,
-.word-display.heading-word .word-orp {
+.word-display.heading-word .word-after {
     color: inherit;
+    font-weight: 400;
+    filter: none;
+}
+
+/* Keep ORP red even for heading-word so the pivot letter remains visible */
+.word-display.heading-word .word-orp {
+    color: #FF4444;
     font-weight: 400;
     filter: none;
 }
