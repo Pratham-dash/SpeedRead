@@ -38,9 +38,12 @@ class TextProcessor:
             # Exclude lines ending with other sentence punctuation (!, ?, ,)
             if any(text.endswith(p) for p in ['!', '?', ',']):
                 return False
-            
-            # Check if at least one word is capitalized (avoid split if possible)
-            if text[0].isupper():  # First char capitalized is good enough
+
+            # Treat short, capitalized lines as headings. This avoids
+            # misclassifying paragraph lines that were wrapped with a
+            # newline (e.g., text split mid-sentence) as headings.
+            words = text.split()
+            if text[0].isupper() and len(words) <= 6:
                 return True
         
         return False

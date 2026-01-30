@@ -157,31 +157,28 @@ body::before {
 
 .word-orp {
     color: #FF4444;
-    font-weight: 500;
+    font-weight: 400;
     position: relative;
     display: inline-block;
     text-align: center;
-    filter: drop-shadow(0 0 8px rgba(255, 68, 68, 0.5));
+    filter: none;
     transition: all 0.2s ease;
 }
 
-/* Heading word styling */
+/* Heading word styling: keep visual weight consistent with normal words */
 .word-display.heading-word {
-    font-size: 64px;
-    font-weight: 700;
-    letter-spacing: 0px;
+    /* keep the same base size as normal display to avoid large jumps */
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: -1px;
 }
 
 .word-display.heading-word .word-before,
-.word-display.heading-word .word-after {
-    color: #aaa;
-    font-weight: 600;
-}
-
+.word-display.heading-word .word-after,
 .word-display.heading-word .word-orp {
-    color: #FF4444;
-    font-weight: 700;
-    filter: drop-shadow(0 0 12px rgba(255, 68, 68, 0.6));
+    color: inherit;
+    font-weight: 400;
+    filter: none;
 }
 
 .progress-section {
