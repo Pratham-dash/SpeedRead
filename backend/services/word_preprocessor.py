@@ -63,7 +63,7 @@ class WordPreprocessor:
             # Determine display multiplier
             if is_heading or is_all_caps:
                 # Headings and all-caps: show 4-5 times (much slower)
-                multiplier = 5
+                multiplier = 2
             elif self._should_duplicate(word):
                 # Long words or comma words: show 3 times
                 multiplier = 3
