@@ -1,24 +1,19 @@
-"""
-SpeedRead Backend - Main Application
-Flask API for speed reading text processing
-"""
-
+import os  # <-- Added missing import
 from flask import Flask
 from flask_cors import CORS
 from api.routes import api_blueprint
 from api.error_handlers import register_error_handlers
 import config
 
-
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config.Config)
     
-
+    # Applied CORS to ALL routes (/*) so /health is included
     CORS(
         app,
-        resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}},
-        supports_credentials=True,  # Allow cookies/auth if needed
+        resources={r"/*": {"origins": app.config["CORS_ORIGINS"]}},
+        supports_credentials=True,  
         methods=["GET", "POST", "OPTIONS"],
         allow_headers=["Content-Type", "Authorization"]
     )
@@ -52,7 +47,6 @@ def create_app():
         }, 200
     
     return app
-
 
 if __name__ == '__main__':
     app = create_app()
