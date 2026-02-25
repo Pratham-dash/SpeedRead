@@ -38,7 +38,7 @@ async function checkBackendStatus() {
     // Status indicator removed; just check backend and log
     try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 2000);
+        const timeoutId = setTimeout(() => controller.abort(), 60000);
 
         const healthUrl = API_BASE_URL.endsWith('/api')
             ? API_BASE_URL.replace(/\/api$/, '') + '/health'
@@ -401,3 +401,4 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+
