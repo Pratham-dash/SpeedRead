@@ -89,7 +89,7 @@ class TextProcessor:
         text = re.sub(r':\s', ':   ', text)     # 3 spaces after colon
         
         # Clean up any multiple spaces that were created
-        text = re.sub(r'\s{2,}', '  ', text)     # Max 2 spaces
+        text = re.sub(r'\s{4,}', '   ', text)    # Max 3 spaces
         
         return text.strip()
     

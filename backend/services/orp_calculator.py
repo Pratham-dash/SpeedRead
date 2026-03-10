@@ -10,9 +10,9 @@ class ORPCalculator:
         self.exception_words = {}  # Placeholder for future DB integration
     
     def calculate(self, word: str) -> int:
-        # Future: Check exception words database first
-        # if word.lower() in self.exception_words:
-        #     return self.exception_words[word.lower()]
+        # Check exception words database first
+        if word.lower() in self.exception_words:
+            return self.exception_words[word.lower()]
         
         length = len(word)
         
@@ -32,6 +32,7 @@ class ORPCalculator:
         # Handle empty or whitespace-only words
         if not word or not word.strip():
             return {
+                'word': word,
                 'before': '',
                 'orp': '',
                 'after': '',
@@ -50,6 +51,7 @@ class ORPCalculator:
         orp_index = orp_position - 1
         
         return {
+            'word': word,
             'before': word[:orp_index],
             'orp': word[orp_index] if orp_index < len(word) else '',
             'after': word[orp_index + 1:],
