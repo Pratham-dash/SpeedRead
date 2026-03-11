@@ -2,7 +2,6 @@ from typing import Dict
 
 
 class ContentExtractor:
-
     def extract_from_pdf(self, pdf_path: str) -> Dict[str, any]:
         raise NotImplementedError(
             "PDF extraction not yet implemented. "

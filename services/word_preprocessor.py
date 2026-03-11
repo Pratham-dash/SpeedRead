@@ -3,7 +3,6 @@ import config
 
 
 class WordPreprocessor:
-
     def __init__(self, long_word_threshold: int = None, pause_count: int = None):
         self.long_word_threshold = (
             long_word_threshold or config.Config.LONG_WORD_THRESHOLD

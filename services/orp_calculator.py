@@ -2,7 +2,6 @@ from typing import Dict
 
 
 class ORPCalculator:
-
     def __init__(self):
         # Future: Load exception words from database
         self.exception_words = {}  # Placeholder for future DB integration

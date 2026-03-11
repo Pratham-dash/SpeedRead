@@ -4,7 +4,6 @@ import config
 
 
 class Validator:
-
     MAX_TEXT_LENGTH = config.Config.MAX_TEXT_LENGTH
     MIN_TEXT_LENGTH = config.Config.MIN_TEXT_LENGTH
 

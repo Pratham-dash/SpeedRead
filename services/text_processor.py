@@ -3,7 +3,6 @@ from typing import List, Tuple
 
 
 class TextProcessor:
-
     def is_likely_heading(self, text: str) -> bool:
         """
         Detect if text is likely a heading/title based on formatting patterns.
@@ -174,7 +173,6 @@ class TextProcessor:
         return words_with_meta
 
     def _split_multi_hyphenated_words(self, words: List[str]) -> List[str]:
-
         result = []
 
         for word in words:
@@ -204,7 +202,6 @@ class TextProcessor:
         return result
 
     def remove_special_formatting(self, text: str) -> str:
-
         return text
 
     def count_words(self, text: str) -> int:
@@ -217,7 +214,6 @@ class TextProcessor:
         return max(1, sentence_endings)  # At least 1 sentence
 
     def clean_punctuation(self, word: str) -> str:
-
         word = re.sub(r"^[^\w]+", "", word)  # Remove leading punctuation
         word = re.sub(r"[^\w]+$", "", word)  # Remove trailing punctuation
         return word
