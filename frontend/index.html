@@ -41,9 +41,18 @@
             <div class="word-counter">
                 <span class="current-word">0</span> / <span class="total-words">0</span> words
             </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar-fill"></div>
-            </div>
+            <div
+    class="progress-bar-container"
+    role="slider"
+    tabindex="0"
+    aria-label="Reading progress"
+    aria-valuemin="0"
+    aria-valuemax="0"
+    aria-valuenow="0"
+>
+    <div class="progress-bar-fill"></div>
+    <div class="progress-bar-thumb" aria-hidden="true"></div>
+</div>
         </section>
 
         <!-- Controls Section -->
