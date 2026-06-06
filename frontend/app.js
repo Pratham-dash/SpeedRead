@@ -1,8 +1,20 @@
 // SpeedRead - Spritz-style speed reader
 
 const USE_BACKEND = true;
+
+function normalizeApiBaseUrl(value) {
+    if (typeof value !== 'string') return '';
+    const trimmed = value.trim();
+    if (!trimmed) return '';
+    return trimmed.replace(/\/$/, '');
+}
+
+function getApiBaseUrl() {
+    return normalizeApiBaseUrl(window.API_BASE_URL);
+}
+
 // Config
-const API_BASE_URL = window.API_BASE_URL;
+let API_BASE_URL = getApiBaseUrl();
 
 // App state
 const appState = {
@@ -37,8 +49,24 @@ const elements = {
     // statusIndicator removed
 };
 
+function validateApiBaseUrl() {
+    API_BASE_URL = getApiBaseUrl();
+
+    if (!API_BASE_URL) {
+        console.warn('API_BASE_URL is not configured. Backend integration disabled.');
+        return false;
+    }
+
+    return true;
+}
+
 async function checkBackendStatus() {
     console.log('Checking backend status...');
+
+    if (!validateApiBaseUrl()) {
+        appState.backendConnected = false;
+        return false;
+    }
 
     // Status indicator removed; just check backend and log
     try {
@@ -408,7 +436,7 @@ async function loadText() {
     elements.loadTextBtn.textContent = 'Loading...';
 
     try {
-        if (USE_BACKEND) {
+        if (USE_BACKEND && validateApiBaseUrl()) {
             await loadTextFromBackend(text);
         } else {
             loadTextLocally(text);
@@ -439,6 +467,10 @@ async function loadText() {
 }
 
 async function loadTextFromBackend(text) {
+    if (!validateApiBaseUrl()) {
+        throw new Error('API_BASE_URL is not configured');
+    }
+
     const response = await fetch(`${API_BASE_URL}/process-text`, {
         method: 'POST',
         headers: {
@@ -523,6 +555,11 @@ function initializeEventListeners() {
 
 async function init() {
     console.log('SpeedRead application initialized');
+
+    if (!validateApiBaseUrl()) {
+        console.warn('No backend API URL configured, app will use local text processing fallback.');
+    }
+
     await checkBackendStatus();
     appState.speed = parseInt(elements.speedSelector.value);
 
