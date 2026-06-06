@@ -1,6 +1,4 @@
 {
   "version": 2,
-  "installCommand": "echo 'No install step required'",
-  "buildCommand": "echo 'Static frontend build complete'",
-  "outputDirectory": "frontend"
+  "ignoreCommand": "exit 0"
 }
